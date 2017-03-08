@@ -1,0 +1,62 @@
+{
+	"swagger": "2.0",
+	"info": {
+		"version": "1.0.0",
+		"title": "Complex definitions",
+		"contact": {
+			"name": "Petri Kivikangas",
+			"email": "petri.kivikangas@protonmail.com"
+		},
+		"license": {
+			"name": "The MIT License (MIT)",
+			"url": "https://opensource.org/licenses/MIT"
+		}
+	},
+	"basePath": "/api",
+	"schemes": [
+		"http"
+	],
+	"x-swagger-mongoose": {
+		"validators": "./lib/validators",
+		"description": "The relative path to validators library from process.cwd()"
+	},
+	"definitions": {
+		"Customer": {
+			"description": "Customer company",
+			"type": "object",
+			"required": ["contact_information", "person_in_charge", "id"],
+			"properties": {
+				"person_in_charge": {
+					"type": "object",
+					"allOf": [
+						{ "$ref": "#/definitions/ContactInformation" },
+						{
+							"type": "object",
+							"properties": {
+								"skype": { "description": "Skype", "type": "string" }
+							}
+						}
+					]
+				},
+				"contact_information": {
+					"$ref": "#/definitions/ContactInformation"
+				},
+				"id": { "type": "string" },
+				"created_at": { "type": "string", "format": "date-time" },
+				"updated_at": { "type": "string", "format": "date-time" }
+			}
+		},
+		"ContactInformation": {
+			"required": ["name", "email"],
+			"type": "object",
+			"properties": {
+				"name": { "type": "string" },
+				"tel": { "type": "string" },
+				"mobile": { "type": "string" },
+				"fax": { "type": "string" },
+				"email": { "type": "string", "format": "email" },
+				"address": { "type": "string" }
+			}
+		}
+	}
+}
