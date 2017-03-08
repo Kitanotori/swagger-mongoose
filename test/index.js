@@ -21,7 +21,6 @@ describe('swagger-mongoose tests', function () {
     });
   });
 
-
   afterEach(function (done) {
     delete mongoose.models.Pet;
     delete mongoose.models.Address;
@@ -446,6 +445,13 @@ describe('swagger-mongoose tests', function () {
     assert(Human.schema.paths.father.options.type === Schema.Types.ObjectId, 'Wrong "father" attribute: type');
     assert(Human.schema.paths.mother.instance === 'ObjectID', 'Wrong "mother" attribute: instance');
     assert(Human.schema.paths.mother.options.type === Schema.Types.ObjectId, 'Wrong "mother" attribute: type');
+
+    done();
+  });
+
+  it('should compile complex definitions', function (done) {
+    var swagger = fs.readFileSync('./test/complex.json');
+    var models = swaggerMongoose.compile(swagger.toString());
 
     done();
   });
