@@ -67,10 +67,12 @@
                     "type": "string"
                 },
                 "dob": {
-                    "type": "date"
+                    "type": "string",
+                    "format": "date"
                 },
                 "price": {
-                    "type": "double"
+                    "type": "number",
+                    "format": "double"
                 },
                 "sold": {
                     "type": "boolean"

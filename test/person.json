@@ -69,10 +69,12 @@
                     "type": "string"
                 },
                 "lng": {
-                    "type": "double"
+                    "type": "number",
+                    "format": "double"
                 },
                 "lat": {
-                    "type": "double"
+                    "type": "number",
+                    "format": "double"
                 }
             }
         },
