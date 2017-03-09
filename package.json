@@ -20,7 +20,7 @@
     "mongoose": "^4.8.6"
   },
   "scripts": {
-    "test": "mocha --timeout 10000"
+    "test": "mocha --timeout 60000"
   },
   "repository": {
     "type": "git",
